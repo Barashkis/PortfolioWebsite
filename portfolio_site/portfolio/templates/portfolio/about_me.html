@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "portfolio/about_me/ss-icons.css" %}">
+{% endblock %}
+
+{% block content %}
+    <main class="page cv-page">
+        <section class="portfolio-block cv">
+            <div class="container">
+                <div class="heading">
+                    <h2 class="text-center">ОБО МНЕ</h2>
+                </div>
+                {% if not workings|length == 0 %}
+                    <div class="work-experience group">
+                        <div class="heading">
+                            <h2 class="text-center">Опыт работы</h2>
+                        </div>
+                        {% for working in workings %}
+                            {% include "portfolio/includes/work_experience.html" with working=working %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if not educations|length == 0 %}
+                    <div class="education group">
+                        <div class="heading">
+                            <h2 class="text-center">Образование</h2>
+                        </div>
+                        {% for education in educations %}
+                            {% include "portfolio/includes/education.html" with edication=education %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="group">
+                    <div class="row">
+                        {% if not skills|length == 0 %}
+                            <div class="col-md-6">
+                                <div class="skills portfolio-info-card">
+                                    <h2>Умения</h2>
+                                    {% for skill in skills %}
+                                        <h3>{{ skill.skill }}</h3>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="col-md-6">
+                            <div class="contact-info portfolio-info-card">
+                                <h2>Контактная информация</h2>
+                                <div class="row">
+                                    <div class="col-1"><i class="icon ion-android-calendar icon"></i></div>
+                                    <div class="col-9"><span>05.10.2002</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-1"><i class="icon ion-person icon"></i></div>
+                                    <div class="col-9"><span>Баранов Андрей Алексеевич</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-1"><i class="icon ion-at icon"></i></div>
+                                    <div class="col-9"><span>dushez.baranov@gmail.com</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hobbies group">
+                    <div class="heading">
+                        <h2 class="text-center">Хобби</h2>
+                    </div>
+                    <p class="text-center text-muted">Занимаюсь спортом (футбол, велосипед). При наличии свободного времени читаю интересные статьи, связанные со сферой информационных технологий. Помимо этого интересуюсь фронтенд-технологиями и совершенствуюсь в области бэкенда</p>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

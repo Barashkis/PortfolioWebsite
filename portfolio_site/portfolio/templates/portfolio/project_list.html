@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Все проекты{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "portfolio/includes/project_card.css" %}">
+    <link rel="stylesheet" href="{% static "bootstrap/css/ss-icons.css" %}">
+{% endblock %}
+
+{% block content %}
+    <main class="page lanidng-page">
+        {% if projects|length > 0 %}
+            <section class="portfolio-block photography">
+                <div class="container">
+                    {% for project in projects %}
+                        <div class="row g-0">
+                            {% include "portfolio/includes/project_card.html" with project=project %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        {% else %}
+            <section class="portfolio-block">
+                <div class="container">
+                    <div class="heading">
+                        <h2>Проекты отсутствуют</h2>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+    </main>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+        <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "bootstrap/css/ionicons.min.css" %}">
+    <title>{% block title %}{% endblock %}</title>
+    {% block css_files %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+        <div class="container"><a class="navbar-brand logo" href="{% url "index" %}">Andrew Baranov</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="{% url "index" %}">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url "projects" %}">Проекты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url "about-me" %}">Обо мне</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url "contact" %}">Свяжитесь со мной</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block content %}{% endblock %}
+    <footer class="page-footer">
+        <div class="container">
+            <div class="links"><a href="{% url "about-me" %}">Обо мне</a><a href="{% url "contact" %}">Свяжитесь со мной</a><a href="{% url "projects" %}">Проекты</a></div>
+        </div>
+        <a href="https://www.linkedin.com/in/andrei-baranov/" class="fa fa-linkedin"></a>
+        <a href="https://www.instagram.com/duha_baranov12/" class="fa fa-instagram"></a>
+        <a href="https://vk.com/barashk1s" class="fa fa-vk"></a>
+        <a href="https://t.me/DushEzzz" class="fa fa-telegram"></a>
+    </footer>
+    <link rel="script" href="{% static "js/theme.js" %}">
+    <link rel="script" href="{% static "bootstrap/js/bootstrap.min.js" %}">
+    <link rel="script" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js">
+</body>
+</html>

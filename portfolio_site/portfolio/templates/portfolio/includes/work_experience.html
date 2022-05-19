@@ -1,0 +1,10 @@
+<div class="item">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>{{ working.job }}</h3>
+            <h4 class="organization">{{ working.organization }}</h4>
+        </div>
+        <div class="col-md-6"><span class="period">{{ working.start|date:"M y" }} - {{ working.end|date:"M y" }}</span></div>
+    </div>
+    <p class="text-muted">{{ working.description }}</p>
+</div>

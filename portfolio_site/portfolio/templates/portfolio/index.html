@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Главная Страница{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "portfolio/includes/project_card.css" %}">
+    <link rel="stylesheet" href="{% static "bootstrap/css/ss-icons.css" %}">
+{% endblock %}
+
+{% block content %}
+    <main class="page lanidng-page">
+        <section class="portfolio-block block-intro">
+            <div class="container">
+                <div class="avatar" style="background-image:url({% static "portfolio/index/img/avatars/main_avatar.jpg" %})"></div>
+                <div class="about-me">
+                    <p><br>Всем привет! Меня зовут Андрей Баранов, и я занимаюсь backend разработкой<br></p>
+                </div>
+            </div>
+        </section>
+        {% if not projects|length == 0 %}
+            <section class="portfolio-block photography">
+                <div class="container">
+                    <h1><strong>ПОСЛЕДНИЕ ПРОЕКТЫ</strong><br></h1>
+                    {% for project in projects %}
+                    <div class="row g-0">
+                        {% include "portfolio/includes/project_card.html" with project=project %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+        <section class="portfolio-block skills">
+            <div class="container">
+                <div class="heading">
+                    <h2>Мои навыки</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card special-skill-item border-0">
+                            <div class="card-header bg-transparent border-0"><img class="project" src="{% static "portfolio/index/img/avatars/web-programming.jfif" %}"></div>
+                            <div class="card-body">
+                                <h3 class="card-title">Web Programming on Python</h3>
+                                <p class="card-text">Язык программирования Python применяется во многих сферах, но наибольшую популярность он приобрел в области веб-программирования. Умение парсить сайты,
+                                изучать их структуру, применять полученные данные в других проектах (например, в Telegram ботах), а также знание связанных с Python библиотеками - это как раз те навыки, которыми я обладаю.
+                                Также на данный момент я имею сертификат Mikrotik MTCNA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card special-skill-item border-0">
+                            <div class="card-header bg-transparent border-0"><img class="project" src="{% static "portfolio/index/img/avatars/django-framework.png" %}"></div>
+                            <div class="card-body">
+                                <h3 class="card-title">Django Framework</h3>
+                                <p class="card-text">Django - один из самых популярных фреймворков, на нем написано множество всемирно известных сайтов.
+                                Кстати, данный сайт тоже написан с использованием Django</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card special-skill-item border-0">
+                            <div class="card-header bg-transparent border-0"><img class="project" src="{% static "portfolio/index/img/avatars/linux.png" %}"></div>
+                            <div class="card-body">
+                                <h3 class="card-title">Knowledge of Linux</h3>
+                                <p class="card-text">Каждый backend-разработчик должен знать Linux: ее командная строка, удобство в использовании,
+                                огромное разнообразие инструментов. Поэтому я тоже пользуюсь этой операционной системой</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <section class="portfolio-block website gradient">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-12 col-lg-5 offset-lg-1 text">
+                    <h3>Сайт-портфолио</h3>
+                    <p><br>Данный сайт представляет собой мое портфолио: здесь можно узнать обо мне, моих навыках, также посмотреть проекты, которые я сделал. После создания мной очередного проекта сайт будет обновлен, то есть вы сразу сможете посмотреть то, что я сделал<br></p>
+                </div>
+                <div class="col-md-12 col-lg-5">
+                    <div class="portfolio-laptop-mockup">
+                        <div class="screen">
+                            <div class="screen-content" style="background-image:url({% static "portfolio/index/img/avatars/display.png" %})"></div>
+                        </div>
+                        <div class="keyboard"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

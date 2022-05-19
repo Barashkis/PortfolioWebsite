@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Свяжитесь со мной{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "portfolio/contact/contact.css" %}">
+    <link rel="stylesheet" href="{% static "portfolio/contact/contact_button.css" %}">
+    <link rel="stylesheet" href="{% static "bootstrap/css/ss-icons.css" %}">
+{% endblock %}
+
+
+{% block content %}
+    <main class="page contact-page">
+        <section class="portfolio-block contact">
+            <div class="container">
+                <div class="heading">
+                    <h2>СВЯЖИТЕСЬ СО МНОЙ</h2>
+                </div>
+
+                {% if name %}
+                    <div class="about-me">
+                        <h2>Письмо было успешно отправлено. Спасибо, {{ name }}!</h2>
+                    </div>
+
+                {% else %}
+                    {% if contact_form.errors %}
+                        <div id="alert">
+                            <h2>Что-то пошло не так!</h2>
+                            <p>Пожалуйста, попробуйте снова</p>
+                            <a href="#contact-form">Fix!</a>
+                        </div>
+                    {% endif %}
+
+                    <section id="contact-form">
+                        <form action="{% url "contact" %}" method="post">
+                        {% csrf_token %}
+                        {% for form_field in contact_form %}
+                            <div class="form-controls {% if form_field.errors %}invalid{% endif %}">
+                                {{ form_field.label_tag }}
+                                {{ form_field }}
+                                {{ form_field.errors }}
+                            </div>
+                        {% endfor %}
+                        <button class="custom-btn btn">Отправить</button>
+                        </form>
+                    </section>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+{% endblock %}

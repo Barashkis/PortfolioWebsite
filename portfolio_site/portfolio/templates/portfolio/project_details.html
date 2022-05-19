@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ project.title }}{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "portfolio/project_details/ss-icons.css" %}">
+{% endblock %}
+
+{% block content %}
+    <main class="page project-page">
+        <section class="portfolio-block project">
+            <div class="container">
+                <div class="heading">
+                    <h2>{{ project.title }}</h2>
+                </div>
+                <div class="image" style="background-image:url({{ project.image.url }})"></div>
+                <div class="row">
+                    <div class="col-12 col-md-6 offset-md-1 info">
+                        <h3>Описание</h3>
+                        <p>{{ project.content }}</p>
+                    </div>
+                    <div class="col-12 col-md-3 offset-md-1 meta">
+                        <div class="tags">
+                            <span class="meta-heading">Теги</span>
+                            <p>
+                                {% for tag in project.tags.all %}
+                                    {% if not tag == last_tag %}
+                                        {{ tag.caption }},
+                                    {% else %}
+                                        {{ tag.caption }}
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+                            <span class="meta-heading">Дата</span><span>{{ project.date|date:"d M y" }}</span>
+                            <span class="meta-heading">Ссылка</span><span><a href="{{ project.source }}">{{ project.source }}</a></span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

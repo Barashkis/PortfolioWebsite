@@ -1,0 +1,23 @@
+<div class="blog-card">
+    <div class="meta">
+      <div class="photo" style="background-image: url({{ project.image.url }})"></div>
+      <ul class="details">
+        <li class="date">{{ project.date|date:"d M y" }}</li>
+        <li class="tags">
+          <ul>
+              {% for tag in project.tags.all %}
+                  <li>{{ tag.caption }}</li>
+              {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="description">
+      <h1>{{ project.title }}</h1>
+      <h2>{{ project.excerpt }}</h2>
+      <p>{{ project.content }}</p>
+      <p class="read-more">
+        <a href="{% url "project_details" project.slug %}">Подробнее</a>
+      </p>
+    </div>
+</div>
